@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
 import 'package:get/get.dart';
 import 'package:getx_todo_project/bindings/my_bindings.dart';
@@ -16,13 +17,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
       return GetMaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(textTheme: GoogleFonts.montserratTextTheme()),
         // * Transition between pages
-        defaultTransition: Transition.fadeIn,
+        defaultTransition: Transition.downToUp,
         getPages: MyRoutes.pages,
         initialBinding: MyBindings(),
         initialRoute: '/home_screen',
       );
     });
+  }
+
+  static void changeColor(Color color, Brightness brightness) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarIconBrightness: brightness, statusBarColor: color));
   }
 }

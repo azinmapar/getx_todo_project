@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:getx_todo_project/constants/constants.dart';
 import 'package:getx_todo_project/constants/my_colors.dart';
+import 'package:getx_todo_project/main.dart';
 import 'package:getx_todo_project/widgets/my_floating_action_button_widget.dart';
 import 'package:getx_todo_project/widgets/top_section_screen_widget.dart';
 
@@ -11,6 +11,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MyApp.changeColor(kPrimaryColor, Brightness.light);
     return Scaffold(
       backgroundColor: Colors.white,
       // * Add Button

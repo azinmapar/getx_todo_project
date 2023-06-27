@@ -10,6 +10,7 @@ final double k70Width = Get.width * 0.17;
 // * Height
 final double k20Height = Get.height * 0.02;
 final double k30Height = Get.height * 0.04;
+final double k40Height = Get.height * 0.05;
 final double k10Height = Get.height * 0.014;
 
 // * Radius
