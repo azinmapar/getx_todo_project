@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:getx_todo_project/constants/constants.dart';
 import 'package:getx_todo_project/constants/my_colors.dart';
+import 'package:getx_todo_project/widgets/my_floating_action_button_widget.dart';
+import 'package:getx_todo_project/widgets/top_section_screen_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,84 +14,52 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       // * Add Button
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: kPrimaryColor,
-        onPressed: () {},
-        child: const Icon(Icons.add),
-      ),
+      floatingActionButton: const MyFloatingActionButtonWidget(),
       // * Whole Page
       body: SafeArea(
         child: Stack(
+          alignment: Alignment.bottomCenter,
           children: [
-            // * Top Part Of The Screen
+            // * Top Section Of The Screen
+            const TopSectionScreenWidget(),
             Container(
               width: Get.width,
-              color: kPrimaryColor,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // * App Bar
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: k10Width),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.arrow_back_ios,
-                            color: kAppTitleColor,
+              height: Get.height * 0.6,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(25.0),
+                  topRight: Radius.circular(25.0),
+                ),
+              ),
+              child: Container(
+                margin: EdgeInsets.all(k30Height),
+                child: ListView.separated(
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: const Text('Title'),
+                        subtitle: const Text('Subtitle'),
+                        trailing: Checkbox(
+                          value: true,
+                          onChanged: (value) {},
+                          activeColor: kPrimaryColor,
+                          side: const BorderSide(
+                            color: Colors.black45,
+                            width: 2.0,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(4.0),
                           ),
                         ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.menu,
-                            color: kAppTitleColor,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  // * Top Icon
-                  Container(
-                    margin: EdgeInsets.only(left: k60Width, top: k20Height),
-                    child: CircleAvatar(
-                      radius: k35Radius,
-                      backgroundColor: kAppTitleColor,
-                      child: Center(
-                        child: Icon(
-                          Icons.library_add_check_sharp,
-                          color: kPrimaryColor,
-                          size: k40Icon,
-                        ),
-                      ),
-                    ),
-                  ),
-                  // * Top Title
-                  Container(
-                    margin: EdgeInsets.only(left: k80Width, top: k20Height),
-                    child: Text(
-                      kAppTitle,
-                      style: TextStyle(
-                        color: kAppTitleColor,
-                        fontSize: k20Font,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  // * Top Subtitle
-                  Container(
-                    margin: EdgeInsets.only(left: k70Width, top: k10Height),
-                    child: Text(
-                      kAppSubtitle,
-                      style: TextStyle(
-                        color: kAppSubtitleColor,
-                        fontSize: k18Font,
-                      ),
-                    ),
-                  ),
-                ],
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return const Divider(
+                        height: 2.0,
+                        color: Colors.black45,
+                      );
+                    },
+                    itemCount: 15),
               ),
             ),
           ],
