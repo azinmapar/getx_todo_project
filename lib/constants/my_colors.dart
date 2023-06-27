@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
+import 'dart:ui';
 
-class MyColors {
-  static Color kPrimaryColor = const Color(0xFF004D40);
-  static Color kAppTitle = const Color(0xFF000000);
-}
+const Color kPrimaryColor = Color(0xFF004D40);
+const Color kAppTitleColor = Color(0xFFFFFFFF);
+const Color kAppSubtitleColor = Color(0xFFB7B7B7);
