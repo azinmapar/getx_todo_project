@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:getx_todo_project/controllers/task_controller.dart';
 import 'package:getx_todo_project/main.dart';
 import 'package:getx_todo_project/pages/add_button_widget.dart';
 import 'package:getx_todo_project/pages/add_note_text_field.dart';
@@ -28,7 +28,9 @@ class AddTaskScreen extends StatelessWidget {
                   child: Row(
                     children: [
                       Text(
-                        'New Task',
+                        Get.find<TaskController>().isEditing
+                            ? 'Edit Task'
+                            : 'New Task',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: k20Font,

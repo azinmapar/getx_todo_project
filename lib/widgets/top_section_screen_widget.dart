@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_todo_project/constants/constants.dart';
 import 'package:getx_todo_project/constants/my_colors.dart';
+import 'package:getx_todo_project/controllers/task_controller.dart';
 
 class TopSectionScreenWidget extends StatelessWidget {
   const TopSectionScreenWidget({
@@ -68,14 +69,16 @@ class TopSectionScreenWidget extends StatelessWidget {
           ),
           // * Top Subtitle
           Container(
-            margin: EdgeInsets.only(left: k70Width, top: k10Height),
-            child: Text(
-              kAppSubtitle,
-              style: TextStyle(
-                color: kAppSubtitleColor,
-                fontSize: k18Font,
-              ),
-            ),
+            margin: EdgeInsets.only(left: k80Width, top: k10Height),
+            child: Obx(() {
+              return Text(
+                '${Get.find<TaskController>().taskList.length} $kAppSubtitle',
+                style: TextStyle(
+                  color: kAppSubtitleColor,
+                  fontSize: k18Font,
+                ),
+              );
+            }),
           ),
         ],
       ),

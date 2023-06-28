@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:getx_todo_project/constants/my_colors.dart';
+import 'package:getx_todo_project/controllers/text_field_conroller.dart';
 
 import '../constants/constants.dart';
 
@@ -12,11 +15,12 @@ class TodoTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: k30Height),
-      child: const TextField(
+      child: TextField(
+        controller: Get.find<TextFieldController>().title,
         maxLines: 6,
         cursorColor: kPrimaryColor,
         cursorHeight: 20,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.black45),
           ),
